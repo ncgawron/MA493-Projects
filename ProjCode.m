@@ -1,4 +1,25 @@
 %% 
+
+% for funsies attempt at k++
+
+
+dataVec = randi(100,1,100);
+
+n=length(dataVec); 
+
+randIndex = randi(n);
+
+initalV_ci = dataVec(randIndex);
+
+%while InitalizationCounter ~=1
+
+[dummy,NextInd]=max(abs(dataVec-initalV_ci));
+
+dataVec(NextInd)
+
+
+%end; 
+%%
 % Topic I.6 - Alternating Minimization Scheme Algorithm for k-Means Clustering*
 % 
 % Clear the workspace and close all figure windows
