@@ -4,16 +4,19 @@ close all; clear all;
 
 % 100 2-dimensional points, each points is a vector! 
 %hopefully this is like quakes data
-dataVec_whole = randi(100,2,100);
-dataVec = dataVec_whole; 
+XData = randi(100,2,80);
+dataVec = XData; 
 %number of clusters; 
-k =6; 
+k =5; 
 
 % num of data points 
 n=length(dataVec); 
 
+%randomly assigned all 100 data points to k clusters
+IndexSet = randi(k,n,1);
+
 %haider likes zero initalization! 
-C_values = zeros(size(dataVec,1),k);
+Cvalues = zeros(size(dataVec,1),k);
 
 
 % first step of k++
@@ -24,27 +27,44 @@ Cvalues(:,1)= dataVec(:,randIndex);
 % eliminates data point
 dataVec(:,randIndex)= []; 
 
+%%
+
 for l=2:k
       % computes ecu. norm
-    D_x = sqrt(sum((dataVec-Cvalues(:,l-1)).^2));
-        % gets max value and index
-    [Val,NewIndex] = max(D_x);
-        %puts it in the list
-    Cvalues(:,l) = dataVec(:,NewIndex);
+      %intialize val vec for all furtherst poitns from each centriod
+      %already made     ,.... there are l-1 centriods already made
+      % the distance is in the left coloumn and the index for data point is
+      % on the right
+      Val_Vec = zeros(l-1,2)
+      for i = 1:l-1 
+         % computes the distance from every point to the i-th centriod 
+        D_x = sqrt(sum((dataVec-Cvalues(:,i)).^2))
+        % gets max value and index for the point from the i-th centriod
+        [Fur_dist,PotIndex] = max(D_x)
+        % stoes the max distance and the index where this point was located
+        % in data vec
+        Val_Vec(i,:) = [Fur_dist,PotIndex] 
+      end 
+     % gets the minimum value of the furthest distnaces, all in first
+     % coloumn 
+    [mindist_ofFurthest, WhereisNewCent ] = min(Val_Vec(:,1))
+        %takes the value of the index in corresponding coloumn 
+    NewIndex =  Val_Vec(WhereisNewCent,2)
+        % we input the new centriod in the Cvalues vector
+    Cvalues(:,l) = dataVec(:,NewIndex)
         % trashes it from being selected again; 
-    dataVec(:,NewIndex) = []; 
+    dataVec(:,NewIndex) = []
 end
 
 
-plot1 = plot(dataVec_whole(1,:),dataVec_whole(2,:));
-grid on;
-plot1.Marker = '*';
-plot1.LineStyle = 'none'; 
-hold on; 
-plot2 = plot(Cvalues(1,:),Cvalues(2,:),'r');
-plot2.Marker = 'O'; 
-plot2.MarkerSize = 16; 
-plot2.LineStyle='none';
+ 
+plot2 = plot(Cvalues(1,:),Cvalues(2,:));
+    plot2.LineStyle = 'none' ;
+    plot2.Marker = 'O';
+    plot2.MarkerSize = 10;
+    plot2.MarkerFaceColor = 'r';
+hold on;
+plot1 = scatter(XData(1,:),XData(2,:),50,IndexSet,'filled');
 
 
 %%
