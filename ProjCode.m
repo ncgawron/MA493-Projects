@@ -7,7 +7,7 @@ close all; clear all;
 dataVec_whole = randi(100,2,100);
 dataVec = dataVec_whole; 
 %number of clusters; 
-k =2; 
+k =6; 
 
 % num of data points 
 n=length(dataVec); 
@@ -18,15 +18,15 @@ C_values = zeros(size(dataVec,1),k);
 
 % first step of k++
 randIndex = randi(n);
-
+% first cluster rep vector!
 Cvalues(:,1)= dataVec(:,randIndex);
 
 % eliminates data point
 dataVec(:,randIndex)= []; 
 
 for l=2:k
-      % roughly computes ecu. norm
-    D_x = sum((dataVec-Cvalues(:,l-1)).^2);
+      % computes ecu. norm
+    D_x = sqrt(sum((dataVec-Cvalues(:,l-1)).^2));
         % gets max value and index
     [Val,NewIndex] = max(D_x);
         %puts it in the list
@@ -38,17 +38,18 @@ end
 
 plot1 = plot(dataVec_whole(1,:),dataVec_whole(2,:));
 grid on;
-plot1.Marker = '*'
+plot1.Marker = '*';
 plot1.LineStyle = 'none'; 
 hold on; 
-plot2 = plot(Cvalues(1,:),Cvalues(2,:),'r')
+plot2 = plot(Cvalues(1,:),Cvalues(2,:),'r');
 plot2.Marker = 'O'; 
 plot2.MarkerSize = 16; 
 plot2.LineStyle='none';
 
 
+%%
 
-%end; 
+% going wild here!
 %%
 % Topic I.6 - Alternating Minimization Scheme Algorithm for k-Means Clustering*
 % 
