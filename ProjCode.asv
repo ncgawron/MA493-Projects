@@ -1,5 +1,5 @@
 %% 
-close all; clear all; 
+
 % for funsies attempt at k++ initalization 
 
 % 100 2-dimensional points, each points is a vector! 
@@ -7,7 +7,7 @@ close all; clear all;
 dataVec_whole = randi(100,2,100);
 dataVec = dataVec_whole; 
 %number of clusters; 
-k =2; 
+k =7; 
 
 % num of data points 
 n=length(dataVec); 
@@ -19,32 +19,26 @@ C_values = zeros(size(dataVec,1),k);
 % first step of k++
 randIndex = randi(n);
 
-Cvalues(:,1)= dataVec(:,randIndex);
+Cvalues[:,1]= dataVec(:,randIndex)
 
 % eliminates data point
 dataVec(:,randIndex)= []; 
 
 for l=2:k
       % roughly computes ecu. norm
-    D_x = sum((dataVec-Cvalues(:,l-1)).^2);
+    D_x = sum((dataVec-Cvalues[:,l-1]).^2);
         % gets max value and index
     [Val,NewIndex] = max(D_x);
         %puts it in the list
-    Cvalues(:,l) = dataVec(:,NewIndex);
+    Cvalues[:,l] = dataVec(:,NewIndex)
         % trashes it from being selected again; 
-    dataVec(:,NewIndex) = []; 
+    dataVec[:,NewIndex] = []; 
 end
 
 
-plot1 = plot(dataVec_whole(1,:),dataVec_whole(2,:));
-grid on;
-plot1.Marker = '*'
-plot1.LineStyle = 'none'; 
+plot(dataVec_whole[1,:],dataVec_whole[2,:])
 hold on; 
-plot2 = plot(Cvalues(1,:),Cvalues(2,:),'r')
-plot2.Marker = 'O'; 
-plot2.MarkerSize = 16; 
-plot2.LineStyle='none';
+
 
 
 
@@ -62,7 +56,7 @@ n=12; % Example 1
 m=2;
 
 % Set the number of clusters (k)
-k=7;
+k=4;
 
 % Initialize the data - either as in Example 1 or using random data
 XData = zeros(n,m);
