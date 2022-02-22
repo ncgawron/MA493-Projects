@@ -67,7 +67,7 @@ plot2 = plot(Cvalues(1,:),Cvalues(2,:));
 hold on;
 plot1 = scatter(XData(:,1),XData(:,2),50,IndexSet,'filled');
 
-
+c = Cvalues'
 %%
 
 % going wild here!
