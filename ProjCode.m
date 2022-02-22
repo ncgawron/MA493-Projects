@@ -18,6 +18,7 @@ IndexSet = randi(k,n,1);
 %haider likes zero initalization! 
 Cvalues = zeros(size(dataVec,1),k);
 
+rng(314)
 
 % first step of k++
 randIndex = randi(n);
