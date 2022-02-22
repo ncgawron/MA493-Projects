@@ -35,23 +35,23 @@ for l=2:k
       %already made     ,.... there are l-1 centriods already made
       % the distance is in the left coloumn and the index for data point is
       % on the right
-      Val_Vec = zeros(l-1,2)
+      Val_Vec = zeros(l-1,2);
       for i = 1:l-1 
          % computes the distance from every point to the i-th centriod 
-        D_x = sqrt(sum((dataVec-Cvalues(:,i)).^2))
+        D_x = sqrt(sum((dataVec-Cvalues(:,i)).^2));
         % gets max value and index for the point from the i-th centriod
-        [Fur_dist,PotIndex] = max(D_x)
+        [Fur_dist,PotIndex] = max(D_x);
         % stoes the max distance and the index where this point was located
         % in data vec
-        Val_Vec(i,:) = [Fur_dist,PotIndex] 
+        Val_Vec(i,:) = [Fur_dist,PotIndex] ;
       end 
      % gets the minimum value of the furthest distnaces, all in first
      % coloumn 
-    [mindist_ofFurthest, WhereisNewCent ] = min(Val_Vec(:,1))
+    [mindist_ofFurthest, WhereisNewCent ] = min(Val_Vec(:,1));
         %takes the value of the index in corresponding coloumn 
-    NewIndex =  Val_Vec(WhereisNewCent,2)
+    NewIndex =  Val_Vec(WhereisNewCent,2);
         % we input the new centriod in the Cvalues vector
-    Cvalues(:,l) = dataVec(:,NewIndex)
+    Cvalues(:,l) = dataVec(:,NewIndex);
         % trashes it from being selected again; 
     dataVec(:,NewIndex) = [];
 end
