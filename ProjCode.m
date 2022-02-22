@@ -45,15 +45,15 @@ for l=2:k
         [Fur_dist,PotIndex] = max(D_x)
         % stoes the max distance and the index where this point was located
         % in data vec
-        Val_Vec(i,:) = [Fur_dist,PotIndex] 
+        Val_Vec(i,:) = [Fur_dist,PotIndex] ;
       end 
      % gets the minimum value of the furthest distnaces, all in first
      % coloumn 
-    [mindist_ofFurthest, WhereisNewCent ] = max(Val_Vec(:,1))
+    [mindist_ofFurthest, WhereisNewCent ] = max(Val_Vec(:,1));
         %takes the value of the index in corresponding coloumn 
-    NewIndex =  Val_Vec(WhereisNewCent,2)
+    NewIndex =  Val_Vec(WhereisNewCent,2);
         % we input the new centriod in the Cvalues vector
-    Cvalues(:,l) = dataVec(:,NewIndex)
+    Cvalues(:,l) = dataVec(:,NewIndex);
         % trashes it from being selected again; 
     dataVec(:,NewIndex) = [];
 end
