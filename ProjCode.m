@@ -4,8 +4,8 @@ close all; clear all;
 
 % 100 2-dimensional points, each points is a vector! 
 %hopefully this is like quakes data
-XData = randi(100,2,80);
-dataVec = XData; 
+load Q1data.mat
+dataVec = XData'; 
 %number of clusters; 
 k =5; 
 
@@ -53,7 +53,7 @@ for l=2:k
         % we input the new centriod in the Cvalues vector
     Cvalues(:,l) = dataVec(:,NewIndex)
         % trashes it from being selected again; 
-    dataVec(:,NewIndex) = []
+    dataVec(:,NewIndex) = [];
 end
 
 
@@ -64,7 +64,7 @@ plot2 = plot(Cvalues(1,:),Cvalues(2,:));
     plot2.MarkerSize = 10;
     plot2.MarkerFaceColor = 'r';
 hold on;
-plot1 = scatter(XData(1,:),XData(2,:),50,IndexSet,'filled');
+plot1 = scatter(XData(:,1),XData(:,2),50,IndexSet,'filled');
 
 
 %%
