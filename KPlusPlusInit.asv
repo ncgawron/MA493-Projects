@@ -1,10 +1,16 @@
 
-function c= KPlusPlusInit(XData,k)
+%function [Cvalues]= KPlusPlusInit(XData,k)
 
 
-[n,m]=size(XData);
+
+clc; clear; close all; 
+
+load Q1data.mat
+
+[n,m]=size(XData)
 
 
+k=5; 
 
 
 IndexSet = randi(k,n,1);
@@ -30,7 +36,7 @@ dataVec(randIndex,:)= [];
     % Create a data structure to store closest weight vector for each data
     % point
     closestCluster=zeros(n,1)
-for l = 2:k
+for l = 2:k-1
     
     % Reassign each data vector to the new, closest cluster
     for d=1:n
@@ -59,10 +65,7 @@ for l = 2:k
     % Update the assignments of the data vectors to their new clusters
     IndexSet = closestCluster;
 
-    % sets up a matrix [distance , data point] for each max dist point per
-    % cluster initalizes values to zero!
-    DistanceANDClusterCani = zeros(l-1,3);
-    
+    % sets up a matrix [distance , data point]
     
     % we have l-1 clusters looking for the l th cluster
     for y = 1:l-1
@@ -71,13 +74,12 @@ for l = 2:k
         % computes the distance from closest points to the y-th cluster
         % gets the max!
         [Max_dist_forClosestClus,IndexInClosest] = max (sum( (PointsClosest2y -c(y,:)).^2,2));
-        DistanceANDClusterCani(y,:)= [Max_dist_forClosestClus,PointsClosest2y(IndexInClosest,:)];
+        [Max_dist_forClosestClus,PointClosest2y(IndexInClosest,:)]
     end 
-    [Dist2NextCentriod, NextCentriodLoc]= max(DistanceANDClusterCani(:,1));
-    c(l,:) = DistanceANDClusterCani(NextCentriodLoc,2:end);
+
 end 
 
 
-end
+%end; 
 
 
