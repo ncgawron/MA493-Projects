@@ -196,7 +196,7 @@ end
 
 %%
 
-ClusterNumValues=1:8;
+ClusterNumValues=3:10;
 
 OverallCo=zeros(1,length(ClusterNumValues));
 

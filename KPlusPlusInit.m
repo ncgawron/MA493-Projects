@@ -30,7 +30,7 @@ dataVec(randIndex,:)= [];
 
 
 
-%%
+%% determine 2nd cluster
 
 
 
