@@ -5,12 +5,6 @@ function c= KPlusPlusInit(XData,k)
 [n,m]=size(XData);
 
 
-
-
-IndexSet = randi(k,n,1);
-
-dataVec = XData; 
-
 %haider likes zero initalization! 
 c = zeros(k,size(XData,2));
 
@@ -21,10 +15,8 @@ c = zeros(k,size(XData,2));
 randIndex = randi(n);;
 
 % first cluster rep vector!
-c(1,:)= dataVec(randIndex,:);
+c(1,:)= XData(randIndex,:);
 
-% eliminates data point
-dataVec(randIndex,:)= [];
 
 %%
     % Create a data structure to store closest weight vector for each data

@@ -7,11 +7,12 @@ close all; clear all;
 load Q1data.mat
 
 
-
-
-
 %number of clusters; 
 k =5; 
+
+[n,m]=size(XData);
+
+IndexSet = randi(k,n,1);
 
 c= KPlusPlusInit(XData,k);
 % 
@@ -199,26 +200,4 @@ while (~doneFlag)
     end
 end
 
-
-%%
-
-ClusterNumValues=1:8;
-
-OverallCo=zeros(1,length(ClusterNumValues));
-
-
-p1=plot(OverallCo);
-p1.Marker = "*";
-p1.LineStyle = "-";
-
-
-%%
-
-plot2 = plot(Cvalues(:,1),Cvalues(:,2));
-    plot2.LineStyle = 'none' ;
-    plot2.Marker = 'O';
-    plot2.MarkerSize = 10;
-    plot2.MarkerFaceColor = 'r';
-hold on;
-plot1 = scatter(XData(:,1),XData(:,2),50,IndexSet,'filled');
 
