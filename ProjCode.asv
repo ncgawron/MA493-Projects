@@ -169,13 +169,13 @@ load Q1data.mat
 OvCO_forkPP = zeros(1,10);
 realz =0; 
 k=5; 
-
-for realz = 1:10     
+while realz ~= 10 
+    
 
 [ci,IndexSeti]=KPlusPlusInit(XData,k);
 [IndexSetf,cf]= kmeans493(XData,k,IndexSeti,ci);
 OvCo=oaco(XData,IndexSetf,cf);
-OvCO_forkPP(:,realz) = OvCo ; 
- 
+OvCO_forkPP = OvCo ; 
+realz=realz+1; 
 
 end 
