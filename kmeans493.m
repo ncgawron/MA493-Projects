@@ -1,69 +1,10 @@
-%% Random Initalization
-% Topic I.6 - Alternating Minimization Scheme Algorithm for k-Means Clustering*
-% 
-% Clear the workspace and close all figure windows
+function [IndexSetf,cf]=kmeans493(XData,k,IndexSet,c)
 
-close all; clear all;
+[n,m]=size(XData); 
 
-load Q1data.mat; 
-
-[n,m]= size(XData); 
-
-% Set the number of clusters (k)
-k=5;
-
-% Assign each data vector, randomly to one of the k clusters
-IndexSet = randi(k,n,1);
-
-% Plot the data
-scatter(XData(:,1),XData(:,2),64,IndexSet,'filled');
-hold on
-
-% Create data structures to store the weight vectors for cluster (c), and the 
-% weight vectors from the previous iteration (cPrev)
-c = zeros(k,m);
+% intialized C_prev 
 cPrev = zeros(k,m);
 
-% Randomly initialize the weight vectors so that each component is sampled from 
-% the interval [-1,1]
-c = -1.2 + 2.4*rand(k,m);
-
-% Plot the initial weight vectors
-scatter(c(:,1),c(:,2),200,linspace(1,k,k))
-hold off
-pause
-
-
-
-%% K++ initalization 
-
-close all; clear all; clc;
-% for funsies attempt at k++ initalization 
-
-% 100 2-dimensional points, each points is a vector! 
-%hopefully this is like quakes data
-load Q1data.mat
-
-
-%number of clusters; 
-k =4; 
-
-[n,m]=size(XData);
-
-
-
-[c,IndexSet]= KPlusPlusInit(XData,k);
-
-
-
-
-% Plot the data
-scatter(XData(:,1),XData(:,2),64,IndexSet,'filled');
-hold on
-scatter(c(:,1),c(:,2),200,linspace(1,k,k))
-hold off
-
-%% The Alternating Minimization Scheme
 doneFlag=0;
 
 % Keep alternating updates to weight vectors and cluster assignments until weight 
@@ -150,25 +91,6 @@ while (~doneFlag)
 end
 
 
-%% Calculation of Overall Coherence
-
-% computes overall coherence AFTER K-Means! 
-OvCo=oaco(XData,IndexSet,c)
-
-
-
-%%
-
-close all; clear all; clc;
-% for funsies attempt at k++ initalization 
-
-% 100 2-dimensional points, each points is a vector! 
-%hopefully this is like quakes data
-load Q1data.mat
-
-
-k=5; 
-[ci,IndexSeti]=KPlusPlusInit(XData,k);
-[IndexSetf,cf]= kmeans493(XData,k,IndexSeti,ci);
-OvCo=oaco(XData,IndexSetf,cf);
-OvCo
+cf = c ;
+IndexSetf = IndexSet; 
+end 
