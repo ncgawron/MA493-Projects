@@ -160,11 +160,16 @@ OvCo=oaco(XData,IndexSet,c)
 %% 10 initalizations
 
 close all; clear all; clc;
-% for funsies attempt at k++ initalization 
 
-% 100 2-dimensional points, each points is a vector! 
+
+
+% 50  2-dimensional points, each points is a vector! 
 %hopefully this is like quakes data
 load Q1data.mat
+
+
+
+rng(44)
 
 OvCO_forkPP = zeros(1,10);
 OvCO_forRand = zeros(1,10); 
@@ -179,21 +184,21 @@ for realz = 1:10
 IndexSeti = randi(k,n,1);
 ci = -1.2 + 2.4*rand(k,m);
 
-scatter(XData(:,1),XData(:,2),64,IndexSeti,'filled')
-    hold on
-    scatter(ci(:,1),ci(:,2),200,linspace(1,k,k))
-    hold off
-    pause 
-    
+% scatter(XData(:,1),XData(:,2),64,IndexSeti,'filled')
+%     hold on
+%     scatter(ci(:,1),ci(:,2),200,linspace(1,k,k))
+%     hold off
+%     pause 
+%     
     
 [IndexSetf,cf]= kmeans493(XData,k,IndexSeti,ci);
 OvCo=oaco(XData,IndexSetf,cf);
 OvCO_forRand(:,realz) = OvCo ;
 
-  scatter(XData(:,1),XData(:,2),64,IndexSetf,'filled')
-    hold on
-    scatter(cf(:,1),cf(:,2),200,linspace(1,k,k))
-    hold off
+%   scatter(XData(:,1),XData(:,2),64,IndexSetf,'filled')
+%     hold on
+%     scatter(cf(:,1),cf(:,2),200,linspace(1,k,k))
+%     hold off
 
 
 end 
@@ -204,11 +209,11 @@ for realz = 1:10
 
 [ci,IndexSeti]=KPlusPlusInit(XData,k);
 
- scatter(XData(:,1),XData(:,2),64,IndexSeti,'filled')
-    hold on
-    scatter(ci(:,1),ci(:,2),200,linspace(1,k,k))
-    hold off
-    pause 
+%  scatter(XData(:,1),XData(:,2),64,IndexSeti,'filled')
+%     hold on
+%     scatter(ci(:,1),ci(:,2),200,linspace(1,k,k))
+%     hold off
+%     pause 
     
     %runs k means
     
@@ -217,10 +222,10 @@ for realz = 1:10
 OvCo=oaco(XData,IndexSetf,cf);
 OvCO_forkPP(:,realz) = OvCo ; 
 
-  scatter(XData(:,1),XData(:,2),64,IndexSetf,'filled')
-    hold on
-    scatter(cf(:,1),cf(:,2),200,linspace(1,k,k))
-    hold off
+%   scatter(XData(:,1),XData(:,2),64,IndexSetf,'filled')
+%     hold on
+%     scatter(cf(:,1),cf(:,2),200,linspace(1,k,k))
+%     hold off
 end 
 
 
