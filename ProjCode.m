@@ -91,7 +91,7 @@ load Q1data.mat;
 [n,m]= size(XData); 
 
 % Set the number of clusters (k)
-k=5;
+k=4;
 
 % Assign each data vector, randomly to one of the k clusters
 IndexSet = randi(k,n,1);
@@ -113,6 +113,37 @@ c = -1.2 + 2.4*rand(k,m);
 scatter(c(:,1),c(:,2),200,linspace(1,k,k))
 hold off
 pause
+
+
+
+%% K++ initalization 
+
+close all; clear all; clc;
+% for funsies attempt at k++ initalization 
+
+% 100 2-dimensional points, each points is a vector! 
+%hopefully this is like quakes data
+load Q1data.mat
+
+
+%number of clusters; 
+k =4; 
+
+[n,m]=size(XData);
+
+IndexSet = randi(k,n,1);
+
+c= KPlusPlusInit(XData,k);
+
+% intialized C_prev 
+cPrev = zeros(k,m);
+
+
+% Plot the data
+scatter(XData(:,1),XData(:,2),64,IndexSet,'filled');
+hold on
+scatter(c(:,1),c(:,2),200,linspace(1,k,k))
+hold off
 
 %% The Alternating Minimization Scheme
 doneFlag=0;

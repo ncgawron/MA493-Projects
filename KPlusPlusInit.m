@@ -18,10 +18,12 @@ randIndex = randi(n);;
 c(1,:)= XData(randIndex,:);
 
 
+
+
 %%
     % Create a data structure to store closest weight vector for each data
     % point
-    closestCluster=zeros(n,1)
+    closestCluster=zeros(n,1);
 for l = 2:k
     
     % Reassign each data vector to the new, closest cluster
@@ -65,7 +67,7 @@ for l = 2:k
         [Max_dist_forClosestClus,IndexInClosest] = max (sum( (PointsClosest2y -c(y,:)).^2,2));
         DistanceANDClusterCani(y,:)= [Max_dist_forClosestClus,PointsClosest2y(IndexInClosest,:)];
     end 
-    [Dist2NextCentriod, NextCentriodLoc]= max(DistanceANDClusterCani(:,1));
+    [~, NextCentriodLoc]= max(DistanceANDClusterCani(:,1));
     c(l,:) = DistanceANDClusterCani(NextCentriodLoc,2:end);
 end 
 
