@@ -79,7 +79,7 @@ plot1 = scatter(XData(:,1),XData(:,2),50,IndexSet,'filled');
 %%
 
 % going wild here!
-%%
+%% Random Initalization
 % Topic I.6 - Alternating Minimization Scheme Algorithm for k-Means Clustering*
 % 
 % Clear the workspace and close all figure windows
@@ -131,9 +131,9 @@ k =4;
 
 [n,m]=size(XData);
 
-IndexSet = randi(k,n,1);
 
-c= KPlusPlusInit(XData,k);
+
+[c,IndexSet]= KPlusPlusInit(XData,k);
 
 % intialized C_prev 
 cPrev = zeros(k,m);
@@ -179,7 +179,7 @@ while (~doneFlag)
     scatter(XData(:,1),XData(:,2),64,IndexSet,'filled')
     hold on
     scatter(c(:,1),c(:,2),200,linspace(1,k,k))
-    pause
+    %pause
     
     % Now reassign all data vectors to the closest weight vector (cluster)
 
@@ -220,7 +220,7 @@ while (~doneFlag)
     hold on
     scatter(c(:,1),c(:,2),200,linspace(1,k,k))
     hold off
-    pause
+    %pause
     
     % Terminate the alternating scheme if the weight vectors are unaltered
     % relative to the previous iteration
@@ -232,3 +232,7 @@ while (~doneFlag)
 end
 
 
+%% Calculation of Overall Coherence
+
+% computes overall coherence
+OvCo=oaco(XData,IndexSet,c)

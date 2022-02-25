@@ -1,9 +1,11 @@
 
-function c= KPlusPlusInit(XData,k)
+function [c,IndexSet]= KPlusPlusInit(XData,k)
 
 
 [n,m]=size(XData);
 
+% Establishes Index Set
+IndexSet = randi(k,n,1);
 
 %haider likes zero initalization! 
 c = zeros(k,size(XData,2));
