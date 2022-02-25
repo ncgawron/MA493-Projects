@@ -1,6 +1,8 @@
 
-function [c,IndexSeti]= KPlusPlusInit(XData,k)
+%function [c,IndexSeti]= KPlusPlusInit(XData,k)
 
+load Q1data.mat
+k=5;
 
 % returns the k num of clusters in the matrix c 
 
@@ -82,10 +84,8 @@ for l = 2:k
     [~, NextCentriodLoc]= max(DistanceANDClusterCani(:,1));
     c(l,:) = DistanceANDClusterCani(NextCentriodLoc,2:end);
 end 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%REMOVE EVERYTHING BELOW BEFORE THE END IF WE NEED TO USE A TOTALLY
-%%%%%RANDOM CLUSTERING  BEFOREHAND
+
+%
    for d=1:n
 
         % Store the coordinates of the current data vector
@@ -110,7 +110,7 @@ end
    end
     
    IndexSeti = closestCluster;
-   
+
 end
 
 

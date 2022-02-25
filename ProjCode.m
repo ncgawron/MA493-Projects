@@ -209,7 +209,7 @@ end
 
 
 %k++ initalization 
-for realz = 1:10   
+for realz = 1:10  
 
     [ci,IndexSeti]=KPlusPlusInit(XData,k);
     
@@ -220,7 +220,9 @@ for realz = 1:10
     %     pause 
         
         %runs k means
-        
+   
+    %uses a random     scheme for intial index
+    %[IndexSetf,cf]= kmeans493(XData,k,randi(k,size(XData,1),1),ci);    
     [IndexSetf,cf]= kmeans493(XData,k,IndexSeti,ci);
     
     OvCo=oaco(XData,IndexSetf,cf);
@@ -233,8 +235,11 @@ for realz = 1:10
 end 
 
 
+
+
 mean(OvCO_forkPP)
 mean(OvCO_forRand)
+
 
 
 %% Elbow Method
@@ -246,7 +251,8 @@ load Q1data.mat
 suck =8; 
 initalz =5; 
 
-% rows is number of suc, rows is values of k 
+% rows is number of initlizations we use, coloumns is values of k 
+% for each initilization scheme
 mat2PlotKPP = zeros(initalz,suck); 
 mat2PlotRand =zeros(initalz,suck); 
 
@@ -279,23 +285,37 @@ for k=1:suck
     
     OvCo=oaco(XData,IndexSetf,cf);
     mat2PlotRand(realz,k) = OvCo; 
-    end 
+     end 
+    
+    
     
 end 
 
 
 
-p1 = plot(1:suck, mat2PlotKPP(1,:),'LineWidth',1.5,'Marker',"*",'LineStyle','--')
-hold on; 
-for iter = 2:5
+subplot(1,2,1)
+for iter = 1:5
     plot(1:suck, mat2PlotKPP(iter,:),'LineWidth',1.5,'Marker',"*",'LineStyle','--')
+    hold on;
+    title('Elbow Plot for K++ Initalization')
+    xlabel('Number of Clusters (k)')
+    ylabel('Overall Coherence y')
+    %rectangle('Position',[4-1 7-1 1 1],'Curvature',[.5 .5]) 
+    %legend('Realiz 1','Realiz 4','Realiz 3','Realiz 4','Realiz 5')
+    grid on;
 end 
 
-figure;
-hold off; 
 
-p2 = plot(1:suck, mat2PlotRand(1,:))
+
 hold on; 
-for iter = 2:5
+
+subplot(1,2,2)
+for iter = 1:5
     plot(1:suck, mat2PlotRand(iter,:),'LineWidth',1.5,'Marker',"*",'LineStyle','--')
+     hold on;
+    title('Elbow Plot for Random Initalization')
+    xlabel('Number of Clusters (k)')
+    ylabel('Overall Coherence y')
+    legend('Realiz 1','Realiz 4','Realiz 3','Realiz 4','Realiz 5')
+    grid on;
 end 
