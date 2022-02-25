@@ -169,11 +169,12 @@ load Q1data.mat
 
 
 
-rng(44)
+rng(33)
+
 
 OvCO_forkPP = zeros(1,10);
 OvCO_forRand = zeros(1,10); 
-realz =0; 
+
 k=5; 
 
 
@@ -229,5 +230,5 @@ OvCO_forkPP(:,realz) = OvCo ;
 end 
 
 
-mean(OvCO_forkPP)
-mean(OvCO_forRand)
+OvCO_forkPP
+OvCO_forRand
