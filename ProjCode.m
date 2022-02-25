@@ -157,7 +157,7 @@ OvCo=oaco(XData,IndexSet,c)
 
 
 
-%%
+%% 10 initalizations
 
 close all; clear all; clc;
 % for funsies attempt at k++ initalization 
