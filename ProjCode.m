@@ -235,3 +235,67 @@ end
 
 mean(OvCO_forkPP)
 mean(OvCO_forRand)
+
+
+%% Elbow Method
+
+clc; clear all; close all; 
+
+load Q1data.mat
+
+suck =8; 
+initalz =5; 
+
+% rows is number of suc, rows is values of k 
+mat2PlotKPP = zeros(initalz,suck); 
+mat2PlotRand =zeros(initalz,suck); 
+
+for k=1:suck
+   
+    
+    for realz = 1:initalz
+
+    [ci,IndexSeti]=KPlusPlusInit(XData,k);
+        
+        %runs k means
+        
+    [IndexSetf,cf]= kmeans493(XData,k,IndexSeti,ci);
+    
+    OvCo=oaco(XData,IndexSetf,cf);
+    mat2PlotKPP(realz,k) = OvCo; 
+    end 
+    
+    
+    
+     for realz = 1:initalz
+
+    [n,m]= size(XData);
+    IndexSeti = randi(k,n,1);
+    ci = -1.2 + 2.4*rand(k,m);
+        
+        %runs k means
+        
+    [IndexSetf,cf]= kmeans493(XData,k,IndexSeti,ci);
+    
+    OvCo=oaco(XData,IndexSetf,cf);
+    mat2PlotRand(realz,k) = OvCo; 
+    end 
+    
+end 
+
+
+
+p1 = plot(1:suck, mat2PlotKPP(1,:),'LineWidth',1.5,'Marker',"*",'LineStyle','--')
+hold on; 
+for iter = 2:5
+    plot(1:suck, mat2PlotKPP(iter,:),'LineWidth',1.5,'Marker',"*",'LineStyle','--')
+end 
+
+figure;
+hold off; 
+
+p2 = plot(1:suck, mat2PlotRand(1,:))
+hold on; 
+for iter = 2:5
+    plot(1:suck, mat2PlotRand(iter,:),'LineWidth',1.5,'Marker',"*",'LineStyle','--')
+end 
