@@ -167,9 +167,24 @@ close all; clear all; clc;
 load Q1data.mat
 
 OvCO_forkPP = zeros(1,10);
+OvCO_forRand = zeros(1,10); 
 realz =0; 
 k=5; 
 
+
+% random initalization;
+
+for realz = 1:10
+[n,m]= size(XData);
+IndexSeti = randi(k,n,1);
+ci = -1.2 + 2.4*rand(k,m);
+[IndexSetf,cf]= kmeans493(XData,k,IndexSeti,ci);
+OvCo=oaco(XData,IndexSetf,cf);
+OvCO_forRand(:,realz) = OvCo ;
+end 
+
+
+%k++ initalization 
 for realz = 1:10     
 
 [ci,IndexSeti]=KPlusPlusInit(XData,k);
@@ -179,3 +194,7 @@ OvCO_forkPP(:,realz) = OvCo ;
  
 
 end 
+
+
+OvCO_forkPP
+OvCO_forRand
