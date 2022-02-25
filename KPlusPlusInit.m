@@ -1,5 +1,9 @@
 
-function [c,IndexSet]= KPlusPlusInit(XData,k)
+function [c,IndexSeti]= KPlusPlusInit(XData,k)
+
+% returns the k num of clusters in the matrix c 
+
+% Index Seti  is the inital clustering 
 
 [n,m]=size(XData);
 
