@@ -2,7 +2,7 @@ function OvCo=oaco(XDataf,IndexSetf,c)
     % output overall coherence 
         % calculated by summing the coherence from each 
         %cluster sum_{1 to k } ||x_i-c_i||
-    % input final indexSet 
+    % input final indexSet after K-Means is run!
     % input final set of clusters
     % input orginal data of form nxm for n rows of m dimensional data
     OvCo =0; 
