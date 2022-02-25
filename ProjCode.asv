@@ -169,7 +169,7 @@ load Q1data.mat
 
 
 
-rng(33)
+%rng(33)
 
 
 OvCO_forkPP = zeros(1,10);
@@ -180,7 +180,7 @@ k=5;
 
 % random initalization;
 
-for realz = 1:10
+for realz = 1:200
 [n,m]= size(XData);
 IndexSeti = randi(k,n,1);
 ci = -1.2 + 2.4*rand(k,m);
@@ -206,7 +206,7 @@ end
 
 
 %k++ initalization 
-for realz = 1:10     
+for realz = 1:200     
 
 [ci,IndexSeti]=KPlusPlusInit(XData,k);
 

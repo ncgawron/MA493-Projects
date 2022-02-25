@@ -206,7 +206,7 @@ end
 
 
 %k++ initalization 
-for realz = 1:10     
+for realz = 1:10   
 
 [ci,IndexSeti]=KPlusPlusInit(XData,k);
 
@@ -230,5 +230,5 @@ OvCO_forkPP(:,realz) = OvCo ;
 end 
 
 
-OvCO_forkPP
-OvCO_forRand
+mean(OvCO_forkPP)
+mean(OvCO_forRand)
