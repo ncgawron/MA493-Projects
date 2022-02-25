@@ -34,11 +34,6 @@ while (~doneFlag)
 
     end
 
-    % Plot the updated weight vectors for each cluster
-    scatter(XData(:,1),XData(:,2),64,IndexSet,'filled')
-    hold on
-    scatter(c(:,1),c(:,2),200,linspace(1,k,k))
-    %pause
     
     % Now reassign all data vectors to the closest weight vector (cluster)
 
@@ -73,13 +68,6 @@ while (~doneFlag)
     % Update the assignments of the data vectors to their new clusters
     IndexSet = closestCluster;
     
-    % Plot the data and the updated weight vectors
-    hold off
-    scatter(XData(:,1),XData(:,2),64,IndexSet,'filled')
-    hold on
-    scatter(c(:,1),c(:,2),200,linspace(1,k,k))
-    hold off
-    %pause
     
     % Terminate the alternating scheme if the weight vectors are unaltered
     % relative to the previous iteration

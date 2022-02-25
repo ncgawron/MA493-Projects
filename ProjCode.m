@@ -178,9 +178,24 @@ for realz = 1:10
 [n,m]= size(XData);
 IndexSeti = randi(k,n,1);
 ci = -1.2 + 2.4*rand(k,m);
+
+scatter(XData(:,1),XData(:,2),64,IndexSeti,'filled')
+    hold on
+    scatter(ci(:,1),ci(:,2),200,linspace(1,k,k))
+    hold off
+    pause 
+    
+    
 [IndexSetf,cf]= kmeans493(XData,k,IndexSeti,ci);
 OvCo=oaco(XData,IndexSetf,cf);
 OvCO_forRand(:,realz) = OvCo ;
+
+  scatter(XData(:,1),XData(:,2),64,IndexSetf,'filled')
+    hold on
+    scatter(cf(:,1),cf(:,2),200,linspace(1,k,k))
+    hold off
+
+
 end 
 
 
@@ -188,13 +203,26 @@ end
 for realz = 1:10     
 
 [ci,IndexSeti]=KPlusPlusInit(XData,k);
+
+ scatter(XData(:,1),XData(:,2),64,IndexSeti,'filled')
+    hold on
+    scatter(ci(:,1),ci(:,2),200,linspace(1,k,k))
+    hold off
+    pause 
+    
+    %runs k means
+    
 [IndexSetf,cf]= kmeans493(XData,k,IndexSeti,ci);
+
 OvCo=oaco(XData,IndexSetf,cf);
 OvCO_forkPP(:,realz) = OvCo ; 
- 
 
+  scatter(XData(:,1),XData(:,2),64,IndexSetf,'filled')
+    hold on
+    scatter(cf(:,1),cf(:,2),200,linspace(1,k,k))
+    hold off
 end 
 
 
-OvCO_forkPP
-OvCO_forRand
+mean(OvCO_forkPP)
+mean(OvCO_forRand)
