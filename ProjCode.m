@@ -174,8 +174,9 @@ rng(33)
 % initalization :) heh
 OvCO_forkPP = zeros(1,10);
 OvCO_forRand = zeros(1,10); 
-realz =0; 
 % number of clusters
+
+
 k=5; 
 
 
@@ -208,7 +209,7 @@ end
 
 
 %k++ initalization 
-for realz = 1:10     
+for realz = 1:10   
 
     [ci,IndexSeti]=KPlusPlusInit(XData,k);
     
