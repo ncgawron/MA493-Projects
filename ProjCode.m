@@ -336,3 +336,8 @@ for suck3= 3:10
     [IndexSetf, cf] = kmeans493(XDataM,suck3,IndexSeti,c)
     
 end 
+
+
+% k =6 from jamies eblow 
+
+k= 6; 
