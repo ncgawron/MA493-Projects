@@ -1,10 +1,13 @@
 
-function [c,IndexSeti]= KPlusPlusInit(XData,k)
+function [c,IndexSeti]= KPlusPlusInit(XData,k,varargin)
 
 
 % returns the k num of clusters in the matrix c 
+% Index Seti  is the inital clustering for k means 
 
-% Index Seti  is the inital clustering 
+% XData  is input data n by m for m dimensional 
+% k - num of clusters 
+%varargin{1} - set the inital cluster value!
 
 [n,m]=size(XData);
 
@@ -17,14 +20,16 @@ c = zeros(k,m);
 
 %%%%%%% Gets C_1
 
+if nargin == 2
+    % first step of k++
+    randIndex = randi(n);
 
-% first step of k++
-randIndex = randi(n);
-
-% first cluster rep vector!
-c(1,:)= XData(randIndex,:);
-
-
+    % first cluster rep vector!
+    c(1,:)= XData(randIndex,:);
+else 
+    SetInit42 = varargin{1}; 
+    c(1,:) = XData(SetInit42,:);
+end 
 
 
 %%
