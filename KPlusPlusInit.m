@@ -71,6 +71,9 @@ for l = 2:k
     
     % sets up a matrix [distance , data point] for each max dist point per
     % cluster initalizes values to zero!
+    % note we use 1+m dimensions since we need m dimensions to store the
+    % cluster value 
+    % AND the additional one is used to store the distnace
     DistanceANDClusterCani = zeros(l-1,1+m);
     
     
