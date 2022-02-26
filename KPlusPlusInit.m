@@ -26,8 +26,8 @@ if nargin == 2
     % first cluster rep vector!
     c(1,:)= XData(randIndex,:);
 else 
-    SetInit42 = varargin{1}; 
-    c(1,:) = XData(SetInit42,:);
+     SetInit42 = varargin{1}; 
+     c(1,:) = XData(SetInit42,:);
 end 
 
 
@@ -70,7 +70,10 @@ for l = 2:k
     
     % sets up a matrix [distance , data point] for each max dist point per
     % cluster initalizes values to zero!
-    DistanceANDClusterCani = zeros(l-1,3);
+    % note we use 1+m dimensions since we need m dimensions to store the
+    % cluster value 
+    % AND the additional one is used to store the distnace
+    DistanceANDClusterCani = zeros(l-1,1+m);
     
     
     % we have l-1 clusters looking for the l th cluster
