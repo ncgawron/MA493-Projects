@@ -91,6 +91,8 @@ end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%REMOVE EVERYTHING BELOW BEFORE THE END IF WE NEED TO USE A TOTALLY
 %%%%%RANDOM CLUSTERING  BEFOREHAND
+
+
    for d=1:n
 
         % Store the coordinates of the current data vector
