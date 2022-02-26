@@ -1,4 +1,3 @@
-
 function [c,IndexSeti]= KPlusPlusInit(XData,k,varargin)
 
 
@@ -119,5 +118,3 @@ end
    IndexSeti = closestCluster;
    
 end
-
-
