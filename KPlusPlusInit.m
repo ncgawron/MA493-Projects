@@ -3,11 +3,11 @@ function [c,IndexSeti]= KPlusPlusInit(XData,k,varargin)
 
 
 % returns the k num of clusters in the matrix c 
-% Index Seti  is the inital clustering for k means 
+% IndexSeti  is the inital clustering for k means 
 
 % XData  is input data n by m for m dimensional 
 % k - num of clusters 
-%varargin{1} - set the inital cluster value!
+ %varargin{1} - set the inital centriod value!
 
 [n,m]=size(XData);
 
