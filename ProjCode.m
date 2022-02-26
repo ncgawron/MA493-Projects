@@ -326,4 +326,11 @@ end
 %% MNIST PART 3
 
 
-suck
+ 
+
+for suck3= 3:10
+
+
+    kPlusPlusInit(Mnist,suck3,42)
+
+end 
