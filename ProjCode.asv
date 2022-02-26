@@ -1,4 +1,5 @@
 %% Random Initalization
+% yeet
 % Topic I.6 - Alternating Minimization Scheme Algorithm for k-Means Clustering*
 % 
 % Clear the workspace and close all figure windows
@@ -326,3 +327,10 @@ end
 %% MNIST PART 3
 
 
+% somehow need to get data 
+
+XData
+
+for suck3= 3:10
+    [c,IndexSeti]=kPlusPlusInit(XData,suck3,42)
+end 
