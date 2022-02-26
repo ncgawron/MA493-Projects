@@ -1,8 +1,8 @@
-function [XData] = DatHaider(NImages)
+function [XData,labels] = DatHaider(NImages)
 
 %:input the number of images to extract 
 %output: XData a matrix with informtion on greyscale pictures from MNIST
-% Note this matrix is NImages x 400 <=>
+% Note this matrix is NImages x 400 <=> 20 by 20 images 
 
 
 % Set the number of images to extract from the data set of test images
