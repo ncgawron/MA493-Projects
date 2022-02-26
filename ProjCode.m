@@ -327,4 +327,39 @@ end
 %% MNIST PART 3
 
 
-suck
+% somehow need to get data 
+
+clc; clear; close all;
+
+% Set the number of images to extract from the data set of test images
+NImages = 100;
+
+% Uses the script by S Hegde to extract the images ('testImages') and
+% correct labels ('testLabels') from the two files in the active path
+% file "readMNIST.m" should be in an active path
+
+[imgs labels] = readMNIST('testImages','testLabels', NImages, 0);
+
+
+% Example of how to convert the first 10 images into vectors for input into
+% the clustering algorithm
+
+m = 20*20;
+v = zeros(1,m);
+XData = zeros(NImages,m);
+
+
+% n rows or images 
+% 400 coloumns for 20*20 pixels! 
+
+for i=1:NImages
+    XData(i,:) = reshape(imgs(:,:,i),[1,m]);
+end
+
+
+for suck3= 3:10
+
+
+    [c,IndexSeti]=kPlusPlusInit(XData,suck3,42)
+
+end 
