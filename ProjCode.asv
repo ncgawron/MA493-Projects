@@ -169,7 +169,7 @@ load Q1data.mat
 
 
 
-%rng(33)
+rng(33)
 
 % initalization :) heh
 OvCO_forkPP = zeros(1,10);
@@ -235,22 +235,11 @@ for realz = 1:10
 end 
 
 
-for realz = 1:10  
-
-    [IndexSetf,cf]=kmeans(XData,k);
-    
-    OvCo=oaco(XData,IndexSetf,cf);
-    OvCO_forKMf(:,realz) = OvCo ; 
-    
-    %   scatter(XData(:,1),XData(:,2),64,IndexSetf,'filled')
-    %     hold on
-    %     scatter(cf(:,1),cf(:,2),200,linspace(1,k,k))
-    %     hold off
-end 
 
 
-(OvCO_forkPP)
-(OvCO_forRand)
+mean(OvCO_forkPP)
+mean(OvCO_forRand)
+
 
 
 %% Elbow Method
@@ -330,3 +319,10 @@ for iter = 1:5
     legend('Realiz 1','Realiz 4','Realiz 3','Realiz 4','Realiz 5')
     grid on;
 end 
+
+
+
+
+%% MNIST PART 3
+
+

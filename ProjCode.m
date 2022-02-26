@@ -319,3 +319,11 @@ for iter = 1:5
     legend('Realiz 1','Realiz 4','Realiz 3','Realiz 4','Realiz 5')
     grid on;
 end 
+
+
+
+
+%% MNIST PART 3
+
+
+suck
