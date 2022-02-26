@@ -329,8 +329,10 @@ end
 
 % somehow need to get data 
 
-XDataM = DatHaider(100)
+[XDataM ,labels]= DatHaider(100);
 
 for suck3= 3:10
-    [c,IndexSeti]=kPlusPlusInit(XDataM,suck3,42)
+    [c,IndexSeti]=KPlusPlusInit(XDataM,suck3,42);
+    [IndexSetf, cf] = kmeans493(XDataM,suck3,IndexSeti,c)
+    
 end 
