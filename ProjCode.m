@@ -2,7 +2,7 @@
 % yeet
 % Topic I.6 - Alternating Minimization Scheme Algorithm for k-Means Clustering*
 % 
-% Clear the workspace and close all figure windows
+% Clear the workspace and close all figure windows     
 
 close all; clear all;
 
