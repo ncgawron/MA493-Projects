@@ -333,7 +333,7 @@ end
 
 for suck3= 3:10
     [c,IndexSeti]=KPlusPlusInit(XDataM,suck3,42);
-    [IndexSetf, cf] = kmeans493(XDataM,suck3,IndexSeti,c)
+    [IndexSetf, cf] = kmeans493(XDataM,suck3,IndexSeti,c);
     
 end 
 
@@ -341,3 +341,4 @@ end
 % k =6 from jamies eblow 
 
 k= 6; 
+
