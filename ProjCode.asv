@@ -329,7 +329,7 @@ end
 close all; 
 % somehow need to get data 
 
-[XDataM ,labels2test]= DatHaider(100);
+[XDataM ,labels]= DatHaider(100);
 
 % use k = 6 from jamie elbow! 
 k_fromelbow=6;
@@ -379,15 +379,12 @@ Expiermental_labels = zeros(100,1);
 
 for val_k= 1:k_fromelbow
     
-    Expiermental_labels = ClusterMostOccurNum(val_k).*(IndexSetf==val_k)+Expiermental_labels ;
+    Expiermental_labels = ClusterMostOccurNum(val_k).*(IndexSetf==val_k);
     
 end 
 
 Expiermental_labels
 
 
-% gets the success score by seeing % correct in comparison to the labels!
-SucScore = sum(Expiermental_labels == labels2test) / length(labels2test); 
 
-
-%success score of 45%!
+SucScore = sum(Expiermental_labels == testLabels) / length()
