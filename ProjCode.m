@@ -326,18 +326,77 @@ end
 
 %% MNIST PART 3
 
+close all; 
+numim = 100; % number of images
+% use parts of Haider Code to extract data frame from 100 images 
+[XDataM ,labels2test]= DatHaider(numim);
 
-% somehow need to get data 
+% use k = 6 from jamie elbow! 
+k_fromelbow=10;
+    
 
-[XDataM ,labels]= DatHaider(100);
+%initalizes and does kmeans 
+[c,IndexSeti]=KPlusPlusInit(XDataM,k_fromelbow,42);
+[IndexSetf, cf] = kmeans493(XDataM,k_fromelbow,IndexSeti,c);
 
-for suck3= 3:10
-    [c,IndexSeti]=KPlusPlusInit(XDataM,suck3,42);
-    [IndexSetf, cf] = kmeans493(XDataM,suck3,IndexSeti,c)
+% for the  cluster we...
+for val_k= 1:k_fromelbow 
+
+figure(val_k)    
+
+str = sprintf('Images associated with Cluster %d', val_k);
+
+
+
+% look at all the points in this cluster from k means 
+    for i=1:sum(IndexSetf==val_k)
+       % creates the rows and coloumns for images in a cluster
+        rows_img = round(numim/10);
+        cols_img = round(numim/10);
+       %creates a subplot for a certain cluster k
+       subplot(rows_img,cols_img,i)
+       title(str)
+       %and shows all the images associated with that cluster
+       Cluster_image = XDataM(IndexSetf==val_k,:);
+       currImg = reshape(Cluster_image(i,:),[20,20]);
+       imshow(currImg,'InitialMagnification',1000) 
+    end
+    
+    
+% cluster 1 is 7     
+% cluster 2 is zero 
+% cluster 3 is 3
+% cluster 4 is 2 
+% cluster 5 is 4  
+% cluster 6 is 0
+
+
+end 
+
+%% SUccess score
+
+% done with my eyeball 
+% we see the number that occurs the most in each figure!
+ClusterMostOccurNum = [7 0 3 2 4 0];
+ClusterMostOccurNum = [7 0 2 4 0 6 6 8 2 3];
+%preallocate
+Expiermental_labels = zeros(100,1);
+
+% for every value cluster we assign the indecies for the points assisiated
+% with that cluster a label corresponding to the number that occured the
+% most! 
+
+for val_k= 1:k_fromelbow
+    
+    Expiermental_labels = ClusterMostOccurNum(val_k).*(IndexSetf==val_k)+Expiermental_labels 
     
 end 
 
+Expiermental_labels;
 
-% k =6 from jamies eblow 
 
-k= 6; 
+% gets the success score by seeing % correct in comparison to the labels!
+SucScore = sum(Expiermental_labels == labels2test) / length(labels2test); 
+
+SucScore
+%success score of 45%!
