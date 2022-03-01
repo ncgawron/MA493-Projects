@@ -1,12 +1,12 @@
 function [c,IndexSeti]= KPlusPlusInit(XData,k,varargin)
 
 
-% returns the k num of clusters in the matrix c 
-% IndexSeti  is the inital clustering for k means 
+% output: the k num of clusters in the matrix c with dimension m 
+% output: IndexSeti  is the inital clustering for k means 
 
-% XData  is input data n by m for m dimensional 
-% k - num of clusters 
- %varargin{1} - set the inital centriod value!
+%input: XData  is input data n by m for m dimensional 
+%input: k - num of clusters 
+%varargin{1} - set the inital centriod value!
 
 [n,m]=size(XData);
 
@@ -89,10 +89,6 @@ for l = 2:k
     [~, NextCentriodLoc]= max(DistanceANDClusterCani(:,1));
     c(l,:) = DistanceANDClusterCani(NextCentriodLoc,2:end);
 end 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%REMOVE EVERYTHING BELOW BEFORE THE END IF WE NEED TO USE A TOTALLY
-%%%%%RANDOM CLUSTERING  BEFOREHAND
 
 
    for d=1:n
@@ -119,5 +115,8 @@ end
    end
     
    IndexSeti = closestCluster;
+
+
+%IndexSeti = randi(k,n,1);
    
 end

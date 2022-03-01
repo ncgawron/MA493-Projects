@@ -7,9 +7,9 @@ numf=10;
 OvCO_forkPP=zeros(1,numf);
 
 for realz = 1:numf
-     %  [n,m]= size(XData);
+    %  [n,m]= size(XData);
     %IndexSeti = randi(k,n,1);
-   %ci = -1.2 + 2.4*rand(k,m);
+    %ci = -1.2 + 2.4*rand(k,m);
    
      % k ++ uncomment below    
     [ci,IndexSeti]=KPlusPlusInit(XData,k);

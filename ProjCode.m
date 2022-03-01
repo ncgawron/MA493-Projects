@@ -329,10 +329,14 @@ end
 close all; 
 numim = 100; % number of images
 % use parts of Haider Code to extract data frame from 100 images 
+% 400 cols for 20 x 20 pizels 
+
+%ovco badd at large k FYI
+
 [XDataM ,labels2test]= DatHaider(numim);
 
 % use k = 6 from jamie elbow! 
-k_fromelbow=10;
+k_fromelbow=6;
     
 
 %initalizes and does kmeans 
@@ -378,7 +382,8 @@ end
 % done with my eyeball 
 % we see the number that occurs the most in each figure!
 ClusterMostOccurNum = [7 0 3 2 4 0];
-ClusterMostOccurNum = [7 0 2 4 0 6 6 8 2 3];
+%ClusterMostOccurNum = [7 0 2 4 0 6 6 8 2 3];
+
 %preallocate
 Expiermental_labels = zeros(100,1);
 
@@ -388,7 +393,7 @@ Expiermental_labels = zeros(100,1);
 
 for val_k= 1:k_fromelbow
     
-    Expiermental_labels = ClusterMostOccurNum(val_k).*(IndexSetf==val_k)+Expiermental_labels 
+    Expiermental_labels = ClusterMostOccurNum(val_k).*(IndexSetf==val_k)+Expiermental_labels ;
     
 end 
 
