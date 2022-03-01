@@ -327,9 +327,9 @@ end
 %% MNIST PART 3
 
 close all; 
-% somehow need to get data 
-
-[XDataM ,labels2test]= DatHaider(100);
+numim = 100; % number of images
+% use parts of Haider Code to extract data frame from 100 images 
+[XDataM ,labels2test]= DatHaider(numim);
 
 % use k = 6 from jamie elbow! 
 k_fromelbow=6;
@@ -339,18 +339,24 @@ k_fromelbow=6;
 [c,IndexSeti]=KPlusPlusInit(XDataM,k_fromelbow,42);
 [IndexSetf, cf] = kmeans493(XDataM,k_fromelbow,IndexSeti,c);
 
-% for the first cluster we...
+% for the  cluster we...
 for val_k= 1:k_fromelbow 
 
 figure(val_k)    
-    
-% look atall the points in this cluster
+
+str = sprintf('Images associated with Cluster %d', val_k);
+
+
+
+% look at all the points in this cluster from k means 
     for i=1:sum(IndexSetf==val_k)
-       % make a figure 
-        rows_img = round(sum(IndexSetf==val_k)/4)+1;
-        cols_img = round(sum(IndexSetf==val_k)/4)+1;
+       % creates the rows and coloumns for images in a cluster
+        rows_img = round(numim/10);
+        cols_img = round(numim/10);
+       %creates a subplot for a certain cluster k
        subplot(rows_img,cols_img,i)
-       %and show an image
+       title(str)
+       %and shows all the images associated with that cluster
        Cluster_image = XDataM(IndexSetf==val_k,:);
        currImg = reshape(Cluster_image(i,:),[20,20]);
        imshow(currImg,'InitialMagnification',1000) 
@@ -368,6 +374,7 @@ figure(val_k)
 end 
 
 % done with my eyeball 
+% we see the number that occurs the most in each figure!
 ClusterMostOccurNum = [7 0 3 2 4 0];
 
 %preallocate
@@ -379,15 +386,15 @@ Expiermental_labels = zeros(100,1);
 
 for val_k= 1:k_fromelbow
     
-    Expiermental_labels = ClusterMostOccurNum(val_k).*(IndexSetf==val_k)+Expiermental_labels ;
+    Expiermental_labels = ClusterMostOccurNum(val_k).*(IndexSetf==val_k)+Expiermental_labels 
     
 end 
 
-Expiermental_labels
+Expiermental_labels;
 
 
 % gets the success score by seeing % correct in comparison to the labels!
 SucScore = sum(Expiermental_labels == labels2test) / length(labels2test); 
 
-
+SucScore
 %success score of 45%!
