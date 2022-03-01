@@ -332,7 +332,7 @@ numim = 100; % number of images
 [XDataM ,labels2test]= DatHaider(numim);
 
 % use k = 6 from jamie elbow! 
-k_fromelbow=6;
+k_fromelbow=10;
     
 
 %initalizes and does kmeans 
@@ -373,10 +373,12 @@ str = sprintf('Images associated with Cluster %d', val_k);
 
 end 
 
+%% SUccess score
+
 % done with my eyeball 
 % we see the number that occurs the most in each figure!
 ClusterMostOccurNum = [7 0 3 2 4 0];
-
+ClusterMostOccurNum = [7 0 2 4 0 6 6 8 2 3];
 %preallocate
 Expiermental_labels = zeros(100,1);
 
