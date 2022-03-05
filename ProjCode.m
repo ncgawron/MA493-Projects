@@ -412,6 +412,7 @@ numim = 100; % number of images
 
 SucScoresforAll = zeros(1,8);
 
+%calc success score for each k
 for k_to_test =3:BonusSuck
     
 
