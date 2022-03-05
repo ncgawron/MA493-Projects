@@ -377,7 +377,7 @@ for val_k= 1:k_fromelbow
 
 end 
 
-%% Success score
+%% SUccess score
 
 % done with my eyeball 
 % we see the number that occurs the most in each figure!
@@ -394,7 +394,7 @@ end
 
 SucScore = sum(expLabs == labels2test)/100;
 
-SucScore*100;
+SucScore*100
 
 %% Bonus Part
 
@@ -444,3 +444,6 @@ for k_to_test =3:BonusSuck
         
 end 
 
+
+figure;
+psuc= plot(3:BonusSuck,SucScoresforAll,'*-')
