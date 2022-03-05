@@ -1,13 +1,10 @@
 %% Random Initalization
-% yeet
-% Topic I.6 - Alternating Minimization Scheme Algorithm for k-Means Clustering*
-% 
-% Clear the workspace and close all figure windows     
+    
 
 close all; clear all;
 
 load Q1data.mat; 
-
+%loads in data
 [n,m]= size(XData); 
 
 % Set the number of clusters (k)
@@ -16,9 +13,6 @@ k=5;
 % Assign each data vector, randomly to one of the k clusters
 IndexSet = randi(k,n,1);
 
-% Plot the data
-scatter(XData(:,1),XData(:,2),64,IndexSet,'filled');
-hold on
 
 % Create data structures to store the weight vectors for cluster (c), and the 
 % weight vectors from the previous iteration (cPrev)
@@ -29,12 +23,7 @@ cPrev = zeros(k,m);
 % the interval [-1,1]
 c = -1.2 + 2.4*rand(k,m);
 
-% Plot the initial weight vectors
-scatter(c(:,1),c(:,2),200,linspace(1,k,k))
-hold off
-pause
-
-
+%%% gives us the intial c vectors and IndexSet for random initalization
 
 %% K++ initalization 
 
@@ -47,21 +36,22 @@ load Q1data.mat
 
 
 %number of clusters; 
-k =4; 
+k =6; 
 
 [n,m]=size(XData);
 
 
-
-[c,IndexSet]= KPlusPlusInit(XData,k);
+% function for k++ 
+% returns the IndexSet
+[c_kpp,IndexSet_kpp]= KPlusPlusInit(XData,k);
 
 
 
 
 % Plot the data
-scatter(XData(:,1),XData(:,2),64,IndexSet,'filled');
+scatter(XData(:,1),XData(:,2),64,IndexSet_kpp,'filled');
 hold on
-scatter(c(:,1),c(:,2),200,linspace(1,k,k))
+scatter(c_kpp(:,1),c_kpp(:,2),200,linspace(1,k,k))
 hold off
 
 %% The Alternating Minimization Scheme
