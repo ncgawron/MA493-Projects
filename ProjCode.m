@@ -383,11 +383,20 @@ end
 % we see the number that occurs the most in each figure!
 ClusterMostOccurNum = [7 0 3 2 4 0];
 
-%success score of 45%!
+
+expLabs = zeros(100,1); 
+
+for val_k = 1:k_fromelbow
+    WhereImagesR=IndexSetf==val_k;
+    expLabs = ClusterMostOccurNum(val_k).*(WhereImagesR)+expLabs ;
+end 
 
 
+SucScore = sum(expLabs == labels2test)/100;
 
-
-
+SucScore*100
 
 %% Bonus Part
+
+
+

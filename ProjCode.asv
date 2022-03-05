@@ -385,4 +385,12 @@ ClusterMostOccurNum = [7 0 3 2 4 0];
 
 %success score of 45%!
 
+expLabs = zeros(100,1); 
+
+for val_k = 1:k_fromelbow
+    IndexSetf==val_k
+    ClusterMostOccurNum(val_k).*
+end 
+
+
 %% Bonus Part
