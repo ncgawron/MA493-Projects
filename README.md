@@ -19,7 +19,7 @@ We have sevral scripts and functions:
     -output: a plot for elbow method across kvalues.
     -output OvCo: Overall coherence values in a vector
 
--**readMNIST**: Reads digits and labels from raw MNIST data files, provided. 
+- **readMNIST**: Reads digits and labels from raw MNIST data files, provided. 
 
 - **DigitsImagesPrimer.m**: Provided function 
 
