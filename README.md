@@ -12,8 +12,14 @@ We have sevral scripts and functions:
     - Part 4 : Bonus section 
 - **KPlusPlusInit.m** is a function that takes in input of a Haider formated Data Matrix, the number of clusters k, and optional input of the index for the first centriod. 
 - **oaco.m** is a function that takes in the final indexSet after K-Means is run, the final set of centriods, the Haider formated Data Matrix, and outputs 
-- **DatHaider.m**
-
+- **DatHaider.m** extracts n number of images from the mnist data set!
+- **elbowMethod.m** uses overall coherence and plots the 
+    -input ncluster: the numbers of clusters (successive numbers)
+    -input varargin{1}: The 1st centriod assignment
+    -output: a plot for elbow method across kvalues.
+    -output OvCo: Overall coherence values in a vector
 
 ## Maybe Describe all the files in the readme?
   
+
+  do you happen to have that list?
