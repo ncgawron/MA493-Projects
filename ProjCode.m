@@ -444,3 +444,6 @@ for k_to_test =3:BonusSuck
         
 end 
 
+
+figure;
+psuc = plot(3:BonusSuck,SucScoresforAll,'*-')
