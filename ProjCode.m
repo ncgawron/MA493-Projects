@@ -367,7 +367,7 @@ for val_k= 1:k_fromelbow
     end
     
     
-% cluster 1 is 7     
+% cluster 1 is 1     
 % cluster 2 is zero 
 % cluster 3 is 3
 % cluster 4 is 2 
@@ -381,7 +381,7 @@ end
 
 % done with my eyeball 
 % we see the number that occurs the most in each figure!
-ClusterMostOccurNum = [7 0 3 2 4 0];
+ClusterMostOccurNum = [1 0 3 2 4 0];
 
 
 expLabs = zeros(100,1); 
@@ -399,4 +399,50 @@ SucScore*100
 %% Bonus Part
 
 
+BonusSuck = 10; 
 
+  
+numim = 100; % number of images
+% use parts of Haider Code to extract data frame from 100 images 
+% 400 cols for 20 x 20 pizels 
+
+%ovco badd at large k FYI
+
+[XDataM ,labels2test]= DatHaider(numim);
+
+SucScoresforAll = zeros(1,8);
+
+for k_to_test =3:BonusSuck
+    
+
+
+        %initalizes and does kmeans 
+        [c,IndexSeti]=KPlusPlusInit(XDataM,k_to_test,42);
+        [IndexSetf, cf] = kmeans493(XDataM,k_to_test,IndexSeti,c);
+        
+        
+        MostOccurNum = zeros(1,k_to_test);
+        
+        % for the  cluster we...
+        for val_k= 1:k_to_test
+         MostOccurNum(val_k)  =  mode(labels2test(IndexSetf==val_k));
+        end 
+
+        
+        expLabs = zeros(100,1); 
+
+        for val_k = 1:k_to_test
+            WhereImagesR=IndexSetf==val_k;
+            expLabs = MostOccurNum(val_k).*(WhereImagesR)+expLabs ;
+        end 
+
+
+        SucScore = sum(expLabs == labels2test)/100;
+
+        SucScoresforAll(val_k-2)= SucScore; 
+        
+end 
+
+
+
+plot(3:BonusSuck,SucScoresforAll,'*-')
