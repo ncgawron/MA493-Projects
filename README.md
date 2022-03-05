@@ -11,6 +11,7 @@ We have sevral scripts and functions:
     - Part 3: MNIST Data
     - Part 4 : Bonus section 
 - **KPlusPlusInit.m** is a function that takes in input of a Haider formated Data Matrix, the number of clusters k, and optional input of the index for the first centriod. This function establishes the ++ initalization for k-means clustering algorithm. 
+- **k-means493.m** is a function that conducts the alternating minimzation
 - **oaco.m** is a function that takes in the final indexSet after K-Means is run, the final set of centriods, the Haider formated Data Matrix, and outputs 
 - **DatHaider.m** extracts n number of images from the mnist data set!
 - **elbowMethod.m** uses overall coherence and plots the 
