@@ -22,4 +22,3 @@ We have sevral scripts and functions:
 ## Maybe Describe all the files in the readme?
   
 
-  do you happen to have that list?
