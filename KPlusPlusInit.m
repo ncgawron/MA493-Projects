@@ -1,12 +1,12 @@
 function [c,IndexSeti]= KPlusPlusInit(XData,k,varargin)
-
-
+% This function performs k++ initialization which initializes the initial
+% cluster representatives by maximizing the distance between the centroid
+% chosen.
+% input: XData  is input data n by m for m dimensional 
+% input: k - num of clusters 
 % output: the k num of clusters in the matrix c with dimension m 
 % output: IndexSeti  is the inital clustering for k means 
-
-%input: XData  is input data n by m for m dimensional 
-%input: k - num of clusters 
-%varargin{1} - set the inital centriod value!
+% varargin{1} - set the inital centriod value!
 
 [n,m]=size(XData);
 

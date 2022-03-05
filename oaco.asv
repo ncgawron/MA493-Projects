@@ -6,7 +6,7 @@ function OvCo=oaco(XDataf,IndexSetf,c)
 % running k-means 
 % inputs: c is the final opitmal centroid arrangement after running k-means
 % outputs: OvCo is real value giving the coherence of the points from their
-% respective centroid 
+% respective
 
     % output overall coherence 
         % calculated by summing the coherence from each 

@@ -4,9 +4,7 @@ function [IndexSetf,cf]=kmeans493(XData,k,IndexSet,c)
 % XData set 
 % inputs: XData is input data n by m for m dimensional, k is the desired
 % number of clusters, IndexSet is the initial partition of the XData into
-% clusters, and c is the initial set of centroids
-% outputs: IndexSetf is the final partition of the XData points and cf is
-% the final set of optimal centroids 
+% 
 
 [n,m]=size(XData); 
 
