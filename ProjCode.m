@@ -423,19 +423,14 @@ for k_to_test =3:BonusSuck
         
         
         MostOccurNum = zeros(1,k_to_test);
+        expLabs = zeros(100,1); 
+        
         
         % for the  cluster we...
         for val_k= 1:k_to_test
-         % computes the number 
+         % computes the number that occurs most in each cluster
          MostOccurNum(val_k)  =  mode(labels2test(IndexSetf==val_k));
-        end 
-
-        
-        expLabs = zeros(100,1); 
-
-        for val_k = 1:k_to_test
-            WhereImagesR=IndexSetf==val_k;
-            expLabs = MostOccurNum(val_k).*(WhereImagesR)+expLabs ;
+         expLabs = MostOccurNum(val_k).*(WhereImagesR)+expLabs ;
         end 
 
         % computes the success score!
