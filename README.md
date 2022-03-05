@@ -26,6 +26,8 @@ We have sevral scripts and functions:
 
 - All other files are not needed for the ability to run the code present. 
 
-## Maybe Describe all the files in the readme?
+- Use the *help* function for more clarifying infromation on each of the functions presented. 
+
+
   
 
